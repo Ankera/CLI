@@ -1,6 +1,6 @@
 {
   "name": "@zm-template/ac-init",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "> TODO: description",
   "author": "子木 <zimu@ywwl.com>",
   "homepage": "https://github.com/Ankera/CLI#readme",
@@ -24,8 +24,11 @@
     "url": "https://github.com/Ankera/CLI/issues"
   },
   "dependencies": {
-    "@zm-template/ac-command": "^0.0.0",
-    "@zm-template/ac-utils": "^0.0.0"
+    "@zm-template/ac-command": "^0.0.1",
+    "@zm-template/ac-utils": "^0.0.1"
   },
-  "type": "module"
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  }
 }
