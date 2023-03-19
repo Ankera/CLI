@@ -1,0 +1,52 @@
+{
+  "name": "@zm-template/ac-cli",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "子木 <zimu@ywwl.com>",
+  "homepage": "https://github.com/Ankera/CLI#readme",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "bin": {
+    "ac-cli": "./bin/cli.js"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib",
+    "bin"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ankera/CLI.git"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "bugs": {
+    "url": "https://github.com/Ankera/CLI/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@babel/core": "^7.21.3",
+    "@babel/preset-env": "^7.20.2",
+    "@zm-template/ac-init": "^0.0.0",
+    "@zm-template/ac-utils": "^0.0.0",
+    "chalk": "^5.2.0",
+    "commander": "^10.0.0",
+    "dirname-filename-esm": "^1.1.1",
+    "fs-extra": "^11.1.0",
+    "import-local": "^3.1.0",
+    "semver": "^7.3.8"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@babel/core": "^7.21.3",
+    "@babel/preset-env": "^7.20.2",
+    "execa": "^7.1.1",
+    "jest": "^29.5.0"
+  }
+}
