@@ -10,5 +10,8 @@
   "license": "ISC",
   "scripts": {
     "cli": "lerna-test-cli"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
