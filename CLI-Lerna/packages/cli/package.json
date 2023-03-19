@@ -33,5 +33,6 @@
   "type": "module",
   "bugs": {
     "url": "https://github.com/Ankera/CLI/issues"
-  }
+  },
+  "gitHead": "ff31c1c17277174787deb039f7f689aa25ceaaa6"
 }
