@@ -1,0 +1,20 @@
+{
+  "name": "@zm-template/workspace-test-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "bin": {
+    "zm-cli-test": "./bin/cli.mjs"
+  },
+  "dependencies": {
+    "@zm-template/workspace-test-a": "^1.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
