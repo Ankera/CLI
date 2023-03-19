@@ -1,8 +1,14 @@
 {
   "name": "root",
   "private": true,
-  "version": "0.0.4",
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
     "lerna": "^6.5.1"
+  },
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
   }
 }
