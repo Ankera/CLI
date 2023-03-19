@@ -1,0 +1,29 @@
+{
+  "name": "@zm-template/lerna-test-a",
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "author": "子木 <zimu@ywwl.com>",
+  "homepage": "https://github.com/Ankera/CLI#readme",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ankera/CLI.git"
+  },
+  "scripts": {
+    "test": "node ./__tests__/a.test.js"
+  },
+  "bugs": {
+    "url": "https://github.com/Ankera/CLI/issues"
+  },
+  "dependencies": {
+    "chalk": "^5.2.0"
+  }
+}
