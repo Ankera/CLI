@@ -14,6 +14,7 @@ export default function installTemplate(selectedTemplate, options) {
   if(pathExistsSync(installDir)){
       if(!force){
         log.error(`当前目录已存在${name}文件夹`);
+        return;
       } else {
         fse.removeSync(installDir);
         fse.ensureDirSync(installDir);
@@ -28,7 +29,7 @@ export default function installTemplate(selectedTemplate, options) {
 function copyFile(targetPath, template, installDir){
   const originFile = getCacheFilePath(targetPath, template);
   const fileList = fse.readdirSync(originFile);
-  
+
   const spinner = ora('正在拷贝文件...').start();
 
   fileList.map((file) => {

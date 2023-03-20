@@ -72,12 +72,40 @@ function makeTargetPath() {
 }
 
 export default async function createTemplate(name, opts) {
-  const addType = await getAddType();
-  const addName = await getAddName();
-  const addTemplate = await getAddTemplate();
-  log.verbose('addType', addType, addName, addTemplate);
+  const { type = null, template = null } = opts;
+  let addType; //  项目类型
+  let addName;  // 项目名称
+  let selectedTemplate;
 
-  const selectedTemplate = ADD_TEMPLATE.find(t => t.value === addTemplate);
+  if(type){
+    addType = type;
+  } else {
+    addType = await getAddType();
+  }
+  log.verbose('addType', addType);
+
+  if(addType === ADD_TYPE_PROPERTY){
+    if(name){
+      addName = name;
+    } else {
+      addName = await getAddName();
+    }
+    log.verbose('addName', addName);
+
+    if(template){
+      selectedTemplate = ADD_TEMPLATE.find(t => t.value === template);
+      if(!selectedTemplate){
+        throw new Error(`项目模板${addType}不存在`);
+      }
+    } else {
+      const addTemplate = await getAddTemplate();
+      selectedTemplate = ADD_TEMPLATE.find(t => t.value === addTemplate);
+    }
+  } else {
+    throw new Error(`创建的项目类型${addType}不支持`);
+  }
+
+  log.verbose('selectedTemplate', selectedTemplate);
 
   const lastVerson =  await getLastesVersion(selectedTemplate.npmName);
 

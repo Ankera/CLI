@@ -6,6 +6,11 @@ import createTemplate from './createTemplate.js';
 import downloadTemplate from './downloadTemplate.js';
 import installTemplate from './installTemplate.js';
 
+/**
+ * examplte
+ * ac-cli init
+ * ac-cli init aaa --type project --template template-vue3 -d;
+ */
 class InitCommand extends Command {
   get command() {
     return 'init [name]'
@@ -17,7 +22,9 @@ class InitCommand extends Command {
 
   get options(){
     return [
-      ['-f, --force', '是否强制更新', false]
+      ['-f, --force', '是否强制更新', false],
+      ['-t, --type <type>', '项目类型(值:project/page)'],
+      ['-tp, --template <type>', '模板名称'],
     ]
   }
 
