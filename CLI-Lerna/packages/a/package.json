@@ -24,7 +24,8 @@
     "url": "https://github.com/Ankera/CLI/issues"
   },
   "dependencies": {
-    "chalk": "^5.2.0"
+    "chalk": "^5.2.0",
+    "inquirer": "^9.1.5"
   },
   "gitHead": "3b94afc79fcced6bf8528383f5350b72f420911a",
   "publishConfig": {
