@@ -1,5 +1,8 @@
 <template>
   <div>
-    hello vue
+    request "api"
   </div>
 </template>
+<script>
+  console.log("request api")
+</script>
