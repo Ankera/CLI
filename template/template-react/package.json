@@ -1,0 +1,11 @@
+{
+  "name": "@zm-template/template-react18",
+  "version": "1.0.0",
+  "description": "react template",
+  "keywords": [],
+  "author": "zm",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  }
+}

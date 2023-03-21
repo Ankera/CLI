@@ -1,0 +1,10 @@
+{
+  "name": "@zm-template/template-vue-element-admin",
+  "version": "1.0.1",
+  "description": "template-vue-element-admin",
+  "author": "zm",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  }
+}

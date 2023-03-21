@@ -1,0 +1,15 @@
+{
+  "name": "@zm-template/template-vue3",
+  "version": "1.0.7",
+  "description": "vue template",
+  "author": "zm",
+  "license": "ISC",
+  "files": [
+    "plugins",
+    "template",
+    "package.json"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}
