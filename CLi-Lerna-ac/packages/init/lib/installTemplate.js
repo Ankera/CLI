@@ -81,8 +81,6 @@ async function ejsRender(targetPath, installDir, template, name) {
     data = await pluginFn({ makeList });
   }
 
-  console.log('===', data)
-
   const ejsData = {
     data: {
       name,

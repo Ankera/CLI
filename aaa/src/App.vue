@@ -1,6 +1,6 @@
 <template>
   <div>
-    request "api"
+    request api
   </div>
 </template>
 <script>

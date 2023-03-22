@@ -1,5 +1,5 @@
 {
-  "name": "@zm-template/ac-utils",
+  "name": "@zm-template/ac-install",
   "version": "0.0.12",
   "description": "> TODO: description",
   "author": "子木 <zimu@ywwl.com>",
@@ -18,21 +18,18 @@
     "url": "git+https://github.com/Ankera/CLI.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "node ./__tests__/install.test.js"
   },
   "bugs": {
     "url": "https://github.com/Ankera/CLI/issues"
   },
-  "dependencies": {
-    "axios": "^1.3.4",
-    "fs-extra": "^11.1.1",
-    "inquirer": "^9.1.5",
-    "npmlog": "^7.0.1",
-    "path-exists": "^5.0.0",
-    "url-join": "^5.0.0"
-  },
   "type": "module",
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "@zm-template/ac-command": "^0.0.12",
+    "@zm-template/ac-utils": "^0.0.12",
+    "chalk": "^5.2.0"
   }
 }
