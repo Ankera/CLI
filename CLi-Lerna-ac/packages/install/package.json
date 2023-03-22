@@ -1,6 +1,6 @@
 {
   "name": "@zm-template/ac-install",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "> TODO: description",
   "author": "子木 <zimu@ywwl.com>",
   "homepage": "https://github.com/Ankera/CLI#readme",
@@ -28,8 +28,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@zm-template/ac-command": "^0.0.12",
-    "@zm-template/ac-utils": "^0.0.12",
+    "@zm-template/ac-command": "^0.0.13",
+    "@zm-template/ac-utils": "^0.0.13",
     "chalk": "^5.2.0"
   }
 }
