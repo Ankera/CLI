@@ -49,6 +49,18 @@ class Github extends GitServer {
   searchRepositories(params) {
     return this.get('/search/repositories', params)
   }
+
+  searchCode(params) {
+    return this.get('/search/code', params)
+  }
+
+  getTags(fullName, params) {
+    return this.get(`/repos/${fullName}/tags`, params);
+  }
+
+  getRepoUrl(fullName){
+    return `https://github.com/${fullName}.git`;
+  }
 }
 
 export default Github;
