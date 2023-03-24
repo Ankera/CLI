@@ -1,5 +1,4 @@
-
-import inquirer from 'inquirer';
+import inquirer from 'inquirer'
 
 function make({
   choices,
@@ -7,13 +6,13 @@ function make({
   message = '请选择',
   type = 'list',
   require = true,
-  mask = "*",
+  mask = '*',
   validate,
   pageSize,
-  loop
-}){
+  loop,
+}) {
   const options = {
-    name: "name",
+    name: 'name',
     default: defaultValue,
     message,
     type,
@@ -21,31 +20,31 @@ function make({
     mask,
     validate,
     pageSize,
-    loop
+    loop,
   }
-  if(type === 'list'){
-    options.choices = choices;
+  if (type === 'list') {
+    options.choices = choices
   }
 
   return inquirer.prompt(options).then((answer) => {
-    return answer.name;
+    return answer.name
   })
 }
 
 export function makeList(params) {
-  return make({...params})
+  return make({ ...params })
 }
 
 export function makeInput(params) {
   return make({
     type: 'input',
-    ...params
+    ...params,
   })
 }
 
 export function makePassword(params) {
   return make({
     type: 'password',
-    ...params
+    ...params,
   })
 }

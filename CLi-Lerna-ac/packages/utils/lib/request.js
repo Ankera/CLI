@@ -1,6 +1,6 @@
-import axios from 'axios';
+import axios from 'axios'
 
-const BASE_URL = 'http://yuyayong.top:5001';
+const BASE_URL = 'http://yuyayong.top:5001'
 
 const service = axios.create({
   baseURL: BASE_URL,
@@ -8,14 +8,13 @@ const service = axios.create({
 })
 
 function onSuccess(response) {
-  return response.data;
+  return response.data
 }
 
 function onError(error) {
-  return Promise.reject(error);
+  return Promise.reject(error)
 }
 
-service.interceptors.response.use(onSuccess, onError);
+service.interceptors.response.use(onSuccess, onError)
 
-
-export default service;
+export default service

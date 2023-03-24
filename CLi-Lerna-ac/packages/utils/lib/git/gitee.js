@@ -1,33 +1,36 @@
-import { GitServer } from './gitServer.js';
-import axios from 'axios';
+import { GitServer } from './gitServer.js'
+import axios from 'axios'
 
-const BASE_URL = 'https://gitee.com/api/v5';
+const BASE_URL = 'https://gitee.com/api/v5'
 
 class Gitee extends GitServer {
   constructor() {
-    super();
+    super()
 
     this.server = axios.create({
       baseURL: BASE_URL,
       timeout: 5000,
-    });
-
-    this.server.interceptors.response.use(response => {
-      return response.data;
-    }, err => {
-      return Promise.reject(err);
     })
+
+    this.server.interceptors.response.use(
+      (response) => {
+        return response.data
+      },
+      (err) => {
+        return Promise.reject(err)
+      }
+    )
   }
 
   get(url, params, headers) {
     return this.server({
       url,
       params: {
-        'access_token': this.token,
-        ...params
+        access_token: this.token,
+        ...params,
       },
       method: 'GET',
-      headers
+      headers,
     })
   }
 
@@ -36,7 +39,7 @@ class Gitee extends GitServer {
       url,
       data: params,
       method: 'POST',
-      headers
+      headers,
     })
   }
 
@@ -45,12 +48,12 @@ class Gitee extends GitServer {
   }
 
   getTags(fullName) {
-    return this.get(`/repos/${fullName}/tags`);
+    return this.get(`/repos/${fullName}/tags`)
   }
 
-  getRepoUrl(fullName){
-    return `https://toscode.gitee.com/${fullName}.git`;
+  getRepoUrl(fullName) {
+    return `https://toscode.gitee.com/${fullName}.git`
   }
 }
 
-export default Gitee;
+export default Gitee

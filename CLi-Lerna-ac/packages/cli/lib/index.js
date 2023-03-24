@@ -1,15 +1,18 @@
 'use strict';
-import createCommandInit from '@zm-template/ac-init';
-import createCommandInstall from '@zm-template/ac-install';
+import createInitCommand from '@zm-template/ac-init';
+import createInstallCommand from '@zm-template/ac-install';
+import createLintCommand from '@zm-template/ac-lint';
 import createCli from './createClI.js';
 import './exception.js';
 
 export default function () {
   const program = createCli();
 
-  createCommandInit(program);
+  createInitCommand(program);
 
-  createCommandInstall(program);
+  createInstallCommand(program);
+
+  createLintCommand(program);
 
   program.parse(process.argv)
 }

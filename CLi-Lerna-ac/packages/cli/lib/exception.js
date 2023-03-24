@@ -1,7 +1,7 @@
-import { isDebug, log } from '@zm-template/ac-utils';
+import { isDebug, log } from '@zm-template/ac-utils'
 
-function printErrorLog(e, type){
-  if(isDebug()) {
+function printErrorLog(e, type) {
+  if (isDebug()) {
     log.error(type, e)
   } else {
     log.error(type, e.message)
@@ -9,9 +9,9 @@ function printErrorLog(e, type){
 }
 
 process.on('unhandledRejection', (e) => {
-  printErrorLog(e, 'promise');
-});
+  printErrorLog(e, 'promise')
+})
 
 process.on('uncaughtException', (e) => {
-  printErrorLog(e, 'error');
-});
+  printErrorLog(e, 'error')
+})

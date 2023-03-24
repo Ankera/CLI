@@ -1,9 +1,15 @@
-import { homedir } from 'node:os';
-import path from 'node:path';
-import { log, makeList, getLastesVersion, request, printErrorLog } from '@zm-template/ac-utils';
+import { homedir } from 'node:os'
+import path from 'node:path'
+import {
+  log,
+  makeList,
+  getLastesVersion,
+  request,
+  printErrorLog,
+} from '@zm-template/ac-utils'
 
-const ADD_TYPE_PROPERTY = 'project';
-const ADD_TYPE_PAGE = 'page';
+const ADD_TYPE_PROPERTY = 'project'
+const ADD_TYPE_PAGE = 'page'
 // 缓存目录
 const TEMP_HOME = '.ac-cli'
 
@@ -34,12 +40,12 @@ const TEMP_HOME = '.ac-cli'
 const ADD_TYPE = [
   {
     name: '项目',
-    value: ADD_TYPE_PROPERTY
+    value: ADD_TYPE_PROPERTY,
   },
   {
     name: '页面',
-    value: ADD_TYPE_PAGE
-  }
+    value: ADD_TYPE_PAGE,
+  },
 ]
 
 // 获取创建类型
@@ -47,7 +53,7 @@ function getAddType() {
   return makeList({
     choices: ADD_TYPE,
     defaultValue: ADD_TYPE_PROPERTY,
-    message: "请选择初始化类型"
+    message: '请选择初始化类型',
   })
 }
 
@@ -55,13 +61,13 @@ function getAddType() {
 function getAddName() {
   return makeList({
     type: 'input',
-    message: "请输入项目名称",
+    message: '请输入项目名称',
     validate: (v) => {
-      if(v.length > 0) {
-        return true;
+      if (v.length > 0) {
+        return true
       }
-      return '必须输入项目名称';
-    }
+      return '必须输入项目名称'
+    },
   })
 }
 
@@ -69,28 +75,28 @@ function getAddName() {
 function getAddTemplate(ADD_TEMP) {
   return makeList({
     choices: ADD_TEMP,
-    message: "请选择项目模板"
+    message: '请选择项目模板',
   })
 }
 
 // 团队列表
 function getAddTeam(team) {
   return makeList({
-    choices: team.map(item => ({name: item, value: item})),
-    message: "请选择团队"
+    choices: team.map((item) => ({ name: item, value: item })),
+    message: '请选择团队',
   })
 }
 
 async function getTemplateFromAPI() {
   try {
     const data = await request({
-      url: "/v1/project",
-      method: "get",
-    });
-    return data;
+      url: '/v1/project',
+      method: 'get',
+    })
+    return data
   } catch (error) {
-    printErrorLog(error);
-    return null;
+    printErrorLog(error)
+    return null
   }
 }
 
@@ -100,63 +106,65 @@ function makeTargetPath() {
 }
 
 export default async function createTemplate(name, opts) {
-  const ADD_TEMPLATE = await getTemplateFromAPI();
-  if(!ADD_TEMPLATE){
+  const ADD_TEMPLATE = await getTemplateFromAPI()
+  if (!ADD_TEMPLATE) {
     throw new Error('项目模块不存在')
   }
-  const { type = null, template = null } = opts;
-  let addType; //  项目类型
-  let addName;  // 项目名称
-  let selectedTemplate;
+  const { type = null, template = null } = opts
+  let addType //  项目类型
+  let addName // 项目名称
+  let selectedTemplate
 
-  if(type){
-    addType = type;
+  if (type) {
+    addType = type
   } else {
-    addType = await getAddType();
+    addType = await getAddType()
   }
-  log.verbose('addType', addType);
+  log.verbose('addType', addType)
 
-  if(addType === ADD_TYPE_PROPERTY){
-    if(name){
-      addName = name;
+  if (addType === ADD_TYPE_PROPERTY) {
+    if (name) {
+      addName = name
     } else {
-      addName = await getAddName();
+      addName = await getAddName()
     }
-    log.verbose('addName', addName);
+    log.verbose('addName', addName)
 
-    if(template){
-      selectedTemplate = ADD_TEMPLATE.find(t => t.value === template);
-      if(!selectedTemplate){
-        throw new Error(`项目模板${addType}不存在`);
+    if (template) {
+      selectedTemplate = ADD_TEMPLATE.find((t) => t.value === template)
+      if (!selectedTemplate) {
+        throw new Error(`项目模板${addType}不存在`)
       }
     } else {
       // 获取团队列表
-      let teamList = ADD_TEMPLATE.map(t => t.team);
-      teamList = [...new Set(teamList)];
-      const addTeam = await getAddTeam(teamList);
-      log.verbose('addTeam', addTeam);
+      let teamList = ADD_TEMPLATE.map((t) => t.team)
+      teamList = [...new Set(teamList)]
+      const addTeam = await getAddTeam(teamList)
+      log.verbose('addTeam', addTeam)
 
-      const addTemplate = await getAddTemplate(ADD_TEMPLATE.filter(item => item.team === addTeam));
+      const addTemplate = await getAddTemplate(
+        ADD_TEMPLATE.filter((item) => item.team === addTeam)
+      )
 
-      selectedTemplate = ADD_TEMPLATE.find(t => t.value === addTemplate);
+      selectedTemplate = ADD_TEMPLATE.find((t) => t.value === addTemplate)
     }
   } else {
-    throw new Error(`创建的项目类型${addType}不支持`);
+    throw new Error(`创建的项目类型${addType}不支持`)
   }
 
-  log.verbose('selectedTemplate', selectedTemplate);
+  log.verbose('selectedTemplate', selectedTemplate)
 
-  const lastVerson =  await getLastesVersion(selectedTemplate.npmName);
+  const lastVerson = await getLastesVersion(selectedTemplate.npmName)
 
-  selectedTemplate.version = lastVerson;
-  
+  selectedTemplate.version = lastVerson
+
   // 缓存目录
-  const targetPath = makeTargetPath();
+  const targetPath = makeTargetPath()
 
   return {
     type: addType,
     name: addName,
     template: selectedTemplate,
-    targetPath
+    targetPath,
   }
 }

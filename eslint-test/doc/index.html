@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>任务调度器</title>
+</head>
+
+<body>
+  <button>立即调用第三个</button>
+  <button>查看结果</button>
+</body>
+<script>
+
+  // 默认一个任务执行3秒
+  function sleep (delay = 3000) {
+    for (let start = Date.now(); Date.now() - start <= delay;) { }
+  }
+
+  var modules = {
+    "code": null,
+    "data": {
+      "hasNext": false,
+      "list": [
+        {
+          "cloudCategoryId": "DCFD6622E72248119313003969415102",
+          "cloudCategoryName": "协同",
+          "cloudCategoryRemark": "",
+          "icon": "ywcloudIconxiangmudapan",
+          "moduleList": null
+        },
+        {
+          "cloudCategoryId": "DC40DE1C973C78221301140755262700",
+          "cloudCategoryName": "粉丝",
+          "cloudCategoryRemark": "",
+          "icon": "ywcloudIconfensiyunying1",
+          "moduleList": null
+        },
+        {
+          "cloudCategoryId": "DC40DE1C973C80221301711888117960",
+          "cloudCategoryName": "商家",
+          "cloudCategoryRemark": "",
+          "icon": "ywcloudIconhuopinzhongxin1",
+          "moduleList": null
+        },
+        {
+          "cloudCategoryId": "DC40DE1C973C75221302164775719250",
+          "cloudCategoryName": "直播",
+          "cloudCategoryRemark": "",
+          "icon": "ywcloudIconzhibozhongxin2",
+          "moduleList": null
+        },
+        {
+          "cloudCategoryId": "DCE0584D733DB7835324461526777110",
+          "cloudCategoryName": "内控",
+          "cloudCategoryRemark": "",
+          "icon": "ywcloudIconneikongzhongxin1",
+          "moduleList": null
+        },
+        {
+          "cloudCategoryId": "DC40DE1C973C76221351624535898130",
+          "cloudCategoryName": "数据",
+          "cloudCategoryRemark": "",
+          "icon": "ywcloudIconshujuzhongxin1",
+          "moduleList": null
+        },
+        {
+          "cloudCategoryId": "DC85B3DBCDE122192770458336745386",
+          "cloudCategoryName": "开发",
+          "cloudCategoryRemark": "",
+          "icon": "ywcloudIcongongyingshangguanli",
+          "moduleList": null
+        },
+        {
+          "cloudCategoryId": "DCB13900511811809872924351191127",
+          "cloudCategoryName": "OMS",
+          "cloudCategoryRemark": "",
+          "icon": "ywcloudIconoms2-01",
+          "moduleList": null
+        },
+        {
+          "cloudCategoryId": "DCAFC1E9EED911954664806985983392",
+          "cloudCategoryName": "系统",
+          "cloudCategoryRemark": "系统云",
+          "icon": "ywcloudIconxitong",
+          "moduleList": null
+        },
+        {
+          "cloudCategoryId": "DCA40475C31792497953280739839953",
+          "cloudCategoryName": "自动化测试1",
+          "cloudCategoryRemark": "",
+          "icon": "",
+          "moduleList": null
+        }
+      ],
+      "pageIndex": null,
+      "pageSize": null,
+      "rowId": "",
+      "totalNumber": null,
+      "totalPage": null
+    },
+    "exceptionMsg": null,
+    "msg": null,
+    "success": true
+  }
+
+
+  var modulesMap = new Map();
+
+  let start = Date.now();
+
+  /**
+   * 
+   * */
+
+  let works = [
+    () => {
+      console.log("第一个start");
+      sleep(20);
+      console.log("第一个end");
+    },
+    () => {
+      console.log("第二个start");
+      sleep(20);
+      console.log("第二个end");
+    },
+    () => {
+      console.log("第三个start");
+      sleep(20);
+      console.log("第三个end");
+    }
+  ];
+</script>
+
+</html>
