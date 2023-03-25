@@ -34,10 +34,15 @@ class Gitee extends GitServer {
     })
   }
 
-  post(url, params, headers) {
+  post(url, data, headers) {
     return this.server({
       url,
-      data: params,
+      data: {
+        ...data,
+      },
+      params: {
+        access_token: this.token,
+      },
       method: 'POST',
       headers,
     })
@@ -53,6 +58,24 @@ class Gitee extends GitServer {
 
   getRepoUrl(fullName) {
     return `https://toscode.gitee.com/${fullName}.git`
+  }
+
+  getUser() {
+    return this.get('/user')
+  }
+
+  getOrg() {
+    return this.get('/user/orgs')
+  }
+
+  async createRepo(name) {
+    // 创建个人仓库
+    if (this.own === 'user') {
+      return await this.post('/user/repos', { name })
+    } else {
+      // 创建组织仓库
+      return await this.post(`/orgs/${this.login}/repos`, { name })
+    }
   }
 }
 

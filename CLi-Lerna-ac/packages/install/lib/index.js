@@ -5,10 +5,8 @@ import ora from 'ora'
 import chalk from 'chalk'
 import {
   log,
-  Github,
-  Gitee,
   makeList,
-  getGitPlatform,
+  initGitServer,
   makeInput,
   printErrorLog,
 } from '@zm-template/ac-utils'
@@ -117,37 +115,7 @@ class InstallCommand extends Command {
   }
 
   async generateGitAPI() {
-    let platform = await getGitPlatform()
-    if (!platform) {
-      platform = await makeList({
-        message: '请选择Git平台',
-        choices: [
-          {
-            name: 'Github',
-            value: CK_KEY_GITHUB,
-          },
-          {
-            name: 'Git',
-            value: CK_KEY_GITEE,
-          },
-        ],
-      })
-    }
-
-    log.verbose('Git平台', platform)
-
-    let gitAPI
-    if (platform === CK_KEY_GITHUB) {
-      gitAPI = new Github()
-    }
-
-    if (platform === CK_KEY_GITEE) {
-      gitAPI = new Gitee()
-    }
-
-    this.gitAPI = gitAPI
-
-    await gitAPI.init(platform)
+    this.gitAPI = await initGitServer()
   }
 
   async searchGitAPI() {

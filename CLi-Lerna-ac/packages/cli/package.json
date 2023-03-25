@@ -33,6 +33,7 @@
   "dependencies": {
     "@babel/core": "^7.21.3",
     "@babel/preset-env": "^7.20.2",
+    "@zm-template/ac-commit": "^0.0.15",
     "@zm-template/ac-init": "^0.0.15",
     "@zm-template/ac-install": "^0.0.15",
     "@zm-template/ac-lint": "^0.0.15",

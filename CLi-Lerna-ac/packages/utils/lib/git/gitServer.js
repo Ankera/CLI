@@ -9,25 +9,10 @@ import { makePassword } from '../inquirer.js'
 
 // 缓存目录
 const TEMP_HOME = '.ac-cli'
-const TEMP_TOKEN = '.token'
+const TEMP_TOKEN = '.git_token'
 const TEMP_GIT_PLATFORM = '.git_platform'
-
-function createTokenPath() {
-  return path.resolve(homedir(), TEMP_HOME, TEMP_TOKEN)
-}
-
-function createPlatformPath() {
-  return path.resolve(homedir(), TEMP_HOME, TEMP_GIT_PLATFORM)
-}
-
-function getGitPlatform() {
-  const platformPath = createPlatformPath()
-  if (pathExistsSync(platformPath)) {
-    return fse.readFileSync(platformPath).toString()
-  }
-
-  return null
-}
+const TEMP_OWN = '.git_own'
+const TEMP_LOGIN = '.git_login'
 
 class GitServer {
   async init(platform) {
@@ -58,8 +43,28 @@ class GitServer {
     fs.writeFileSync(platformPath, platform)
   }
 
+  saveOwn(gitOwn) {
+    this.own = gitOwn
+    const ownPath = createOwnPath()
+    fs.writeFileSync(ownPath, gitOwn)
+  }
+
+  saveLogin(gitLogin) {
+    this.login = gitLogin
+    const loginPath = createLoginPath()
+    fs.writeFileSync(loginPath, gitLogin)
+  }
+
   getPlatform() {
     return this.platform
+  }
+
+  getOwn() {
+    return this.own
+  }
+
+  getLogin() {
+    return this.login
   }
 
   cloneRepo(fullName, tag) {
@@ -107,6 +112,18 @@ class GitServer {
       }
     }
   }
+
+  getUser() {
+    throw new Error('子类必须实现')
+  }
+
+  getOrg() {
+    throw new Error('子类必须实现')
+  }
+
+  createRepo() {
+    throw new Error('子类必须实现')
+  }
 }
 
 function getPackageJson(cwd, fullName) {
@@ -124,4 +141,59 @@ function getProjectPath(cwd, fullName) {
   return projectPath
 }
 
-export { GitServer, getGitPlatform }
+function createTokenPath() {
+  return path.resolve(homedir(), TEMP_HOME, TEMP_TOKEN)
+}
+
+function createPlatformPath() {
+  return path.resolve(homedir(), TEMP_HOME, TEMP_GIT_PLATFORM)
+}
+
+function createOwnPath() {
+  return path.resolve(homedir(), TEMP_HOME, TEMP_OWN)
+}
+
+function createLoginPath() {
+  return path.resolve(homedir(), TEMP_HOME, TEMP_LOGIN)
+}
+
+function getGitPlatform() {
+  const platformPath = createPlatformPath()
+  if (pathExistsSync(platformPath)) {
+    return fse.readFileSync(platformPath).toString()
+  }
+
+  return null
+}
+
+function getGitOwn() {
+  const ownPath = createOwnPath()
+  if (pathExistsSync(ownPath)) {
+    return fse.readFileSync(ownPath).toString()
+  }
+
+  return null
+}
+
+function getGitLogin() {
+  const loginPath = createLoginPath()
+  if (pathExistsSync(loginPath)) {
+    return fse.readFileSync(loginPath).toString()
+  }
+
+  return null
+}
+
+async function clearCache() {
+  const temp = path.resolve(homedir(), TEMP_HOME)
+  const platform = path.resolve(temp, TEMP_GIT_PLATFORM)
+  const token = path.resolve(temp, TEMP_TOKEN)
+  const own = path.resolve(temp, TEMP_OWN)
+  const login = path.resolve(temp, TEMP_LOGIN)
+  await fse.removeSync(platform)
+  await fse.removeSync(token)
+  await fse.removeSync(own)
+  await fse.removeSync(login)
+}
+
+export { GitServer, getGitPlatform, clearCache, getGitOwn, getGitLogin }
