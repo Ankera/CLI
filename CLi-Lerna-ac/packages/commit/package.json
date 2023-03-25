@@ -32,6 +32,8 @@
     "@zm-template/ac-utils": "^0.0.15",
     "chalk": "^5.2.0",
     "fs-extra": "^11.1.1",
-    "oar": "^1.0.0"
+    "oar": "^1.0.0",
+    "semver": "^7.3.8",
+    "simple-git": "^3.17.0"
   }
 }

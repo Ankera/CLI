@@ -1,5 +1,6 @@
 import { GitServer } from './gitServer.js'
 import axios from 'axios'
+import log from '../log.js'
 
 const BASE_URL = 'https://api.github.com'
 
@@ -49,9 +50,6 @@ class Github extends GitServer {
       data: {
         ...data,
       },
-      params: {
-        access_token: this.token,
-      },
       method: 'POST',
       headers,
     })
@@ -81,26 +79,47 @@ class Github extends GitServer {
     return this.get('/user/orgs')
   }
 
+  getRepo(owner, repo) {
+    return this.get(
+      `/repos/${owner}/${repo}`,
+      {},
+      {
+        accept: 'application/vnd.github+json',
+      }
+    ).catch((err) => {
+      return null
+    })
+  }
+
   async createRepo(name) {
-    // 创建个人仓库
-    if (this.own === 'user') {
-      return await this.post(
-        '/user/repos',
-        { name },
-        {
-          accept: 'application/vnd.github+json',
-        }
-      )
+    const repo = await this.getRepo(this.login, name)
+    if (!repo) {
+      log.info('仓库不存在，开始创建')
+      // 创建个人仓库
+      if (this.own === 'user') {
+        return await this.post(
+          '/user/repos',
+          { name },
+          {
+            accept: 'application/vnd.github+json',
+          }
+        )
+      } else {
+        // 创建组织仓库
+        return await this.post(
+          `/orgs/${this.login}/repos`,
+          { name },
+          {
+            accept: 'application/vnd.github+json',
+          }
+        )
+      }
+      log.success('仓库', '仓库创建成功')
     } else {
-      // 创建组织仓库
-      return await this.post(
-        `/orgs/${this.login}/repos`,
-        { name },
-        {
-          accept: 'application/vnd.github+json',
-        }
-      )
+      log.info('仓库存在，直接返回')
     }
+
+    return repo
   }
 }
 
