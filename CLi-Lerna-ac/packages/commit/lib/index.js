@@ -375,7 +375,7 @@ class CommitCommand extends Command {
       await this.git.add(status.created)
       await this.git.add(status.deleted)
       await this.git.add(status.modified)
-      await this.git.add(status.renamed)
+      await this.git.add(status.renamed.map((itm) => item.to))
       let message
       while (!message) {
         message = await makeInput({
