@@ -69,7 +69,7 @@ class Github extends GitServer {
 
   getRepoUrl(fullName) {
     // return `https://github.com/${fullName}.git` // https
-    return `git@github.com/${fullName}.git` // ssh
+    return `git@github.com:${fullName}.git` // ssh
   }
 
   getUser() {
