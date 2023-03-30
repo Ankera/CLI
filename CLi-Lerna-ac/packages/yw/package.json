@@ -1,6 +1,6 @@
 {
   "name": "@zm-template/ac-yw",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "> TODO: description",
   "author": "子木 <zimu@ywwl.com>",
   "homepage": "https://github.com/Ankera/CLI#readme",
@@ -29,8 +29,8 @@
   },
   "type": "module",
   "dependencies": {
-    "@zm-template/ac-command": "^0.0.17",
-    "@zm-template/ac-utils": "^0.0.17",
+    "@zm-template/ac-command": "^0.0.18",
+    "@zm-template/ac-utils": "^0.0.18",
     "execa": "^7.1.1"
   }
 }
