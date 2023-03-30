@@ -3,7 +3,15 @@
 import { program } from 'commander'
 import inquirer from 'inquirer'
 import { execa } from 'execa'
-import pkg from '../package.json'
+import path from 'node:path'
+import fse from 'fs-extra'
+import { dirname } from 'dirname-filename-esm'
+
+const __dirname = dirname(import.meta)
+
+const pkgPath = path.resolve(__dirname, '../package.json')
+
+const pkg = fse.readJsonSync(pkgPath)
 
 program.version(pkg.version || '1.0.0')
 
