@@ -32,8 +32,16 @@ program.command('api <id>').action(async (apiId) => {
             value: 'PROSUPPLIER',
           },
           {
-            name: '电虎<yw-supply>',
+            name: '电虎<yw-dianhu>',
             value: 'PRO_DIANHU',
+          },
+          {
+            name: '营销<yw-marketing>',
+            value: 'PRO_MARKETING',
+          },
+          {
+            name: '结算<yw-finance>',
+            value: 'PRO_SETTLE',
           },
         ],
       },
