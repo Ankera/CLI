@@ -4,6 +4,7 @@ import createInstallCommand from '@zm-template/ac-install'
 import createLintCommand from '@zm-template/ac-lint'
 import createCommitCommand from '@zm-template/ac-commit'
 import createYwCommand from '@zm-template/ac-yw'
+import createGitCommand from '@zm-template/ac-git'
 import createCli from './createClI.js'
 import './exception.js'
 
@@ -19,6 +20,8 @@ export default function () {
   createCommitCommand(program)
 
   createYwCommand(program)
+
+  createGitCommand(program)
 
   program.parse(process.argv)
 }
