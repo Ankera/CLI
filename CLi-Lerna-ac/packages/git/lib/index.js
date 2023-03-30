@@ -28,7 +28,7 @@ class GitCommand extends Command {
       stdout: 'inherit',
     })
 
-    await execa('git', ['commit', `-am ${message} -n`], {
+    await execa('git', ['commit', `-am "${message}" -n`], {
       stdout: 'inherit',
     })
 
