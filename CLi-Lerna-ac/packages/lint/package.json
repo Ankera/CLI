@@ -1,6 +1,6 @@
 {
   "name": "@zm-template/ac-lint",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "> TODO: description",
   "author": "子木 <zimu@ywwl.com>",
   "homepage": "https://github.com/Ankera/CLI#readme",
@@ -28,8 +28,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@zm-template/ac-command": "^0.0.20",
-    "@zm-template/ac-utils": "^0.0.20",
+    "@zm-template/ac-command": "^0.0.21",
+    "@zm-template/ac-utils": "^0.0.21",
     "chalk": "^5.2.0",
     "eslint": "^8.36.0",
     "execa": "^7.1.1",
