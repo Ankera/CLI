@@ -1,0 +1,24 @@
+{
+  "name": "zimu-cli-ywc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "ywc": "./bin/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "execa": "^7.1.1",
+    "commander": "^10.0.0",
+    "inquirer": "^9.1.5"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  }
+}
