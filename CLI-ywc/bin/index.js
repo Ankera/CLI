@@ -3,8 +3,9 @@
 import { program } from 'commander'
 import inquirer from 'inquirer'
 import { execa } from 'execa'
+import pkg from '../package.json'
 
-program.version('1.0.0')
+program.version(pkg.version || '1.0.0')
 
 program
   .command('api [id]')
