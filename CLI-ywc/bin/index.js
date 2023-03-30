@@ -2,6 +2,7 @@
 
 import { program } from 'commander'
 import inquirer from 'inquirer'
+import { execa } from 'execa'
 
 program.version('1.0.0')
 
