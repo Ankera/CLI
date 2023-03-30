@@ -37,5 +37,6 @@
   "type": "module",
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "gitHead": "e4d4ea2d028c43db22561948bcfdf17d35b733a6"
 }
