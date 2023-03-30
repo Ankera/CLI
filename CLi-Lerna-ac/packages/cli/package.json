@@ -38,6 +38,7 @@
     "@zm-template/ac-install": "^0.0.17",
     "@zm-template/ac-lint": "^0.0.17",
     "@zm-template/ac-utils": "^0.0.17",
+    "@zm-template/ac-yw": "^0.0.17",
     "chalk": "^5.2.0",
     "commander": "^10.0.0",
     "dirname-filename-esm": "^1.1.1",
