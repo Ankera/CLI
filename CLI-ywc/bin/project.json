@@ -2,7 +2,7 @@
   "type": "list",
   "name": "name",
   "message": "请选择项目类型",
-  "default": "PRO_XY_LIVE",
+  "defaultValue": "PRO_XY_LIVE",
   "choices": [
       {
           "name": "直播<yw-broadcast>",
