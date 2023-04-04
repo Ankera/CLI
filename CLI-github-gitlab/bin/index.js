@@ -40,28 +40,20 @@ program.command('git').action(async () => {
   console.log('生成gitID', gitID === 1 ? 'GITLAB' : 'GITHUB')
 
   if (gitID === 1) {
-    cp.exec(`git config --global user.name  "子木";`)
-    cp.exec(`git config --global user.email  "zimu@ywwl.com";`)
+    cp.execSync(`git config --global user.name  "子木";`)
+    cp.execSync(`git config --global user.email  "zimu@ywwl.com";`)
   }
 
   if (gitID === 2) {
-    cp.exec(`git config --global user.name  "ankera";`)
-    cp.exec(`git config --global user.email  "15189120919@163.com";`)
+    cp.execSync(`git config --global user.name  "ankera";`)
+    cp.execSync(`git config --global user.email  "15189120919@163.com";`)
   }
 
-  console.log('====== 切换成功  ======')
-  cp.exec(
-    'git config user.name;git config user.email;',
-    (error, stdout, stderr) => {
-      if (error) {
-        console.error('error: ' + error)
-        return
-      }
-      const res = stdout.split('\n')
-      console.log(`git user.name: ${res[0]}`)
-      console.log(`git user.email: ${res[1]}`)
-    }
-  )
+  console.log('============ 切换成功  ============')
+  let res = cp.execSync('git config user.name;git config user.email;')
+  res = res.toString().split('\n')
+  console.log(`git user.name: ${res[0]}`)
+  console.log(`git user.email: ${res[1]}`)
 })
 
 program.parse(process.argv)
