@@ -31,6 +31,10 @@
       {
           "name": "结算<yw-finance>",
           "value": "PRO_SETTLE"
+      },
+      {
+          "name": "遥望云链<yw-supply-center>",
+          "value": "PROSUPPLIER"
       }
   ]
 }
