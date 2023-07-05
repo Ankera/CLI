@@ -31,6 +31,10 @@ program.command('git').action(async () => {
           name: 'GITHUB',
           value: 2,
         },
+        {
+          name: 'GITEE',
+          value: 3,
+        },
       ],
     })
     .then((answer) => {
@@ -47,6 +51,11 @@ program.command('git').action(async () => {
   if (gitID === 2) {
     cp.execSync(`git config --global user.name  "ankera";`)
     cp.execSync(`git config --global user.email  "15189120919@163.com";`)
+  }
+
+  if (gitID === 3) {
+    cp.execSync(`git config --global user.name  "laoyu";`)
+    cp.execSync(`git config --global user.email  "15189120919@139.com";`)
   }
 
   console.log('============ 切换成功  ============')
