@@ -41,7 +41,7 @@ program.command('git').action(async () => {
       return answer.name
     })
 
-  console.log('生成gitID', gitID === 1 ? 'GITLAB' : 'GITHUB')
+  console.log('生成gitID---', gitID === 1 ? 'GITLAB' : 'GITHUB')
 
   if (gitID === 1) {
     cp.execSync(`git config --global user.name  "余亚勇";`)
