@@ -14,7 +14,7 @@ const pkgPath = path.resolve(__dirname, '../package.json')
 
 const pkg = fs.readFileSync(pkgPath)
 
-program.version(pkg.version || '1.0.0').description('常用脚手架目录');
+program.version(JSON.parse(pkg.toString() || "{}").version || '1.0.0').description('常用脚手架目录');
 
 program
   .command('git')
