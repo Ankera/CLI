@@ -49,7 +49,7 @@ program
 
   if (gitID === 1) {
     cp.execSync(`git config --global user.name  "余亚勇";`)
-    cp.execSync(`git config --global user.email  "15189120919@63.com";`)
+    cp.execSync(`git config --global user.email  "15189120919@163.com";`)
   }
 
   if (gitID === 2) {
