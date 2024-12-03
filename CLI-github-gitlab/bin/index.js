@@ -48,12 +48,12 @@ program
   console.log('生成gitID---', gitID === 1 ? 'GITLAB' : 'GITHUB')
 
   if (gitID === 1) {
-    cp.execSync(`git config --global user.name  "余亚勇";`)
+    cp.execSync(`git config --global user.name  "yuyayong";`)
     cp.execSync(`git config --global user.email  "15189120919@163.com";`)
   }
 
   if (gitID === 2) {
-    cp.execSync(`git config --global user.name  "ankera";`)
+    cp.execSync(`git config --global user.name  "yuyayong";`)
     cp.execSync(`git config --global user.email  "15189120919@163.com";`)
   }
 
